@@ -18,7 +18,7 @@ const AdvancedPanel: React.FC = () => {
 
     return (
         <div className="w-80 bg-gray-950 border-l border-gray-800 flex flex-col h-full overflow-y-auto custom-scrollbar select-none z-40 transition-all duration-300">
-            <div className="p-4 border-b border-gray-800 flex items-center justify-between sticky top-0 bg-gray-950 z-10">
+            <div className="p-4 border-b border-gray-800 flex items-center justify-between sticky top-0 bg-gray-950 z-20">
                 <div className="flex items-center gap-2 text-indigo-400">
                     <Settings2 className="w-5 h-5" />
                     <h2 className="font-semibold tracking-wider text-sm">ADVANCED SYSTEM</h2>
