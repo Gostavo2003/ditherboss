@@ -33,7 +33,7 @@ const AdvancedPanel: React.FC = () => {
 
             <div className="p-4 space-y-8">
                 {/* Paint Tools Section (Disabled for now) */}
-                <div className="space-y-4 relative">
+                <div className="space-y-4 relative overflow-hidden rounded-lg">
                     <div className="absolute inset-0 bg-gray-950/60 backdrop-blur-[1.5px] z-10 flex flex-col items-center justify-center rounded-lg border border-gray-800/50">
                         <span className="bg-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(79,70,229,0.5)]">Coming Soon</span>
                     </div>
