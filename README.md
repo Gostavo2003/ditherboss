@@ -1,4 +1,4 @@
-# DitherBoss 🎨
+<h1 align="center">DitherBoss 🎨</h1>
 
 <p align="center">
   <img src="./media/LOGO.png" alt="DitherBoss Logo" width="300" />
@@ -70,4 +70,4 @@ Color matching uses an inline **Redmean color distance** formula which is way mo
 
 ## Author
 
-Made by **Gostavo.2003** 👾  
+Made by **Gostavo2003** 👾  
