@@ -42,15 +42,15 @@ interface SettingsContextType {
 
 const defaultSettings: AppSettings = {
     mode: 'bw',
-    width: 1000,
+    width: 600,
     exportDpi: 72,
     exportSize: 1000,
-    ditherScale: 1,
+    ditherScale: 2,
     originalFilename: 'ditherboss_export',
     pixelFidelity: true,
 
     bwThreshold: 100,
-    bwMethod: 'floyd',
+    bwMethod: 'atkinson',
     bwFactor: 1.0,
     bwStretch: 0,
 

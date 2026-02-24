@@ -26,6 +26,7 @@ const Workspace: React.FC = () => {
     const workerRef = useRef<Worker | null>(null);
     const currentJobId = useRef<string | null>(null);
     const lastResultRef = useRef<ImageData | null>(null);
+    const isExtractingRef = useRef(false); // Sync ref to prevent race with processImage
 
     // Initialize Worker
     useEffect(() => {
@@ -77,11 +78,13 @@ const Workspace: React.FC = () => {
                         }))
                     });
                     setIsExtracting(false);
+                    isExtractingRef.current = false;
                     // The settings update will trigger the processImage useEffect naturally.
                 } else if (e.data.type === 'ERROR') {
                     console.error('Worker Error:', e.data.error);
                     setIsProcessing(false);
                     setIsExtracting(false);
+                    isExtractingRef.current = false;
                 }
             }
         };
@@ -100,6 +103,7 @@ const Workspace: React.FC = () => {
         }
 
         console.log("Triggering auto-extraction due to change in mode/settings");
+        isExtractingRef.current = true; // Set synchronously to block processImage in same render
         triggerExtraction();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sourceImage, settings.colorExtractMethod, settings.colorCount, settings.mode, settings.colorPaletteMode]);
@@ -129,7 +133,7 @@ const Workspace: React.FC = () => {
     // Main Process Image Trigger
     useEffect(() => {
         if (!sourceImage || !workerRef.current) return;
-        if (isExtracting) return; // Wait for extraction to finish
+        if (isExtractingRef.current || isExtracting) return; // Block if extraction is running (check ref for same-render race)
 
         processImage();
         // eslint-disable-next-line react-hooks/exhaustive-deps
